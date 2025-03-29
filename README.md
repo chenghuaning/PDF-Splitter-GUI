@@ -10,13 +10,13 @@
 
 ## 使用方法
 ### 直接运行EXE
-1. 从[发布页面](https://github.com/chenghuaning/PDF-Splitter-GUI/releases)下载`PDFSplitterGUI.exe`
-2. 双击即可运行（无需安装Python）
+1. 从[发布页面](https://github.com/chenghuaning/PDF-Splitter-GUI/releases)下载`PDFSplitterGUI.zip`
+2. 双击PDFSplitterGUI.exe即可运行
 
 ### 从源码运行
 ```bash
 # 克隆仓库
-git clone https://github.com/yourname/PDF-Splitter-GUI.git
+git clone https://github.com/chenghuaning/PDF-Splitter-GUI.git
 cd PDF-Splitter-GUI
 
 # 安装依赖
