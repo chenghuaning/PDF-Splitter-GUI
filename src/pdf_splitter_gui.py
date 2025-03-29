@@ -4,7 +4,13 @@ from tkinter import filedialog, messagebox, ttk
 from PyPDF2 import PdfReader, PdfWriter
 
 
+def get_default_output_path(input_path):
+    """根据输入文件路径返回同目录下的output文件夹"""
+    if not input_path:
+        return os.path.join(os.path.expanduser("~"), "Desktop", "output")
 
+    input_dir = os.path.dirname(input_path)
+    return os.path.join(input_dir, "output")
 class PDFSplitterGUI:
     def __init__(self, root):
         self.root = root
@@ -13,13 +19,14 @@ class PDFSplitterGUI:
 
         # 变量初始化
         self.input_path = tk.StringVar()
-        self.output_folder = tk.StringVar()
+        self.output_folder = tk.StringVar(value=get_default_output_path(None))
         self.mode = tk.StringVar(value="single")
         self.page_ranges = tk.StringVar()
         self.group_size = tk.IntVar(value=10)
         self.custom_groups = tk.StringVar()
 
         self.create_widgets()
+
 
     def create_widgets(self):
         # 输入文件选择
@@ -111,7 +118,7 @@ class PDFSplitterGUI:
         if filename:
             self.input_path.set(filename)
             # 自动设置输出文件夹为输入文件所在目录
-            self.output_folder.set(os.path.join(os.path.dirname(filename), "../output"))
+            self.output_folder.set(get_default_output_path(filename))
 
     def browse_output(self):
         foldername = filedialog.askdirectory(
